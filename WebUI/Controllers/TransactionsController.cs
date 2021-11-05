@@ -36,6 +36,8 @@ namespace WebUI.Controllers
         public ActionResult CreateTransaction(int id)
         {
             var model = new Transactions();
+            model.account_code = accountObj.code;
+            
             return View(model);
         }
 
