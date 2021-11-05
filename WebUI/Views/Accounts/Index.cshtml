@@ -8,8 +8,8 @@
 <h2>@ViewData["Person"]</h2>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li> / 
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Person")">Persons</a></li> / 
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li> 
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Person")">Persons</a></li> 
     <li class="breadcrumb-item" aria-current="page"> <a href="@Url.Action("CreateAccount", "Accounts", new { id = @ViewData["PersonId"] })">Add New Account</a></li>
   </ol>
 </nav>
