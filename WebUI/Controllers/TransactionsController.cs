@@ -25,8 +25,9 @@ namespace WebUI.Controllers
         // GET: Transactions
         public ActionResult Index(int id)
         {
-            var account = _accounts.GetByID(id);
+            accountObj = _accounts.GetByID(id);
             var model = _transactions.GetAll().Where(x => x.account_code == id);
+            ViewData["PersonId"] = accountObj.person_code;
             ViewData["AccountId"] = id; 
             return View(model);
         }
@@ -59,6 +60,8 @@ namespace WebUI.Controllers
         public ActionResult Edit(int id)
         {
             var obj = _transactions.GetByID(id);
+            ViewData["PersonId"] = accountObj.person_code;
+            ViewData["AccountId"] = accountObj.code;
             return View(obj);
         }
 
