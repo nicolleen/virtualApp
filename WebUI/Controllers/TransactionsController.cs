@@ -13,6 +13,7 @@ namespace WebUI.Controllers
 
         IRepositoryBase<Transactions> _transactions;
         IRepositoryBase<Accounts> _accounts;
+        public static Accounts accountObj;
 
         //Constructor
         public TransactionsController(IRepositoryBase<Transactions> transactions, IRepositoryBase<Accounts> accounts)
@@ -24,6 +25,7 @@ namespace WebUI.Controllers
         // GET: Transactions
         public ActionResult Index(int id)
         {
+            var account = _accounts.GetByID(id);
             var model = _transactions.GetAll().Where(x => x.account_code == id);
             ViewData["AccountId"] = id; 
             return View(model);

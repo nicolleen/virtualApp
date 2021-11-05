@@ -1,57 +1,62 @@
 ﻿@model IEnumerable<Model.Transactions>
 
 @{
-    ViewBag.Title = "Index";
+  ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateTransaction",new { id = @ViewData["AccountId"] })ss
-</p>
+<h2>Transactions</h2>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li> /
+    <li class="breadcrumb-item"><a href="@Url.Action("CreateTransaction", "Transactions", new { id = @ViewData["AccountId"] })">Create Transaction</a></li>
+  </ol>
+</nav>
+
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.account_code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.transaction_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capture_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.amount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th></th>
-    </tr>
+  <tr>
+    <th>
+      Account Code
+    </th>
+    <th>
+      Transaction Date
+    </th>
+    <th>
+      Capture Date
+    </th>
+    <th>
+      Amount
+    </th>
+    <th>
+      Description
+    </th>
+    <th></th>
+  </tr>
 
-@foreach (var item in Model) {
+  @foreach (var item in Model)
+  {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.account_code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.transaction_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capture_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.code }) |
-            @Html.ActionLink("Details", "Details", new { id=item.code }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.code })
-        </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.account.account_number)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.transaction_date)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.capture_date)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.amount)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.description)
+      </td>
+      <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.code }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.code })
+      </td>
     </tr>
-}
+  }
 
 </table>
