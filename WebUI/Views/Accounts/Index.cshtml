@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Model.Accounts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <h2>@ViewData["Person"]</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Person")">Persons</a></li>
+    <li class="breadcrumb-item" aria-current="page"> <a href="@Url.Action("CreateAccount", "Accounts", new { id = @ViewData["PersonId"] })">Add New Account</a></li>
+  </ol>
+</nav>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Account Number
+        </th>
+        <th>
+            Outstanding Balance
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.person.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.account_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.outstanding_balance)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id = item.code }) |
+          @Html.ActionLink("Details", "Index", "Transactions", new { id = item.code }, null) |
+          @Html.ActionLink("Delete", "Delete", new { id = item.code })
+        </td>
+    </tr>
+}
+
+</table>

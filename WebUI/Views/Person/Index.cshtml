@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Model.Person>
+
+@{
+  ViewBag.Title = "PersonDetails";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <div>
+    <h2>PersonDetails</h2>
+    <p>
+      @Html.ActionLink("Create New", "CreatePerson")
+    </p>
+  </div>
+
+
+
+
+
+
+
+<table id="person" class="table">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Id Number</th>
+      <th></th>
+    </tr>
+  <thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.surname)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.id_number)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id = item.code }) |
+          @Html.ActionLink("Details", "Index","Accounts", new { id = item.code },"") |
+          @Html.ActionLink("Delete", "Delete", new { id = item.code })
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+
+@section scripts {
+
+  @Scripts.Render("~/bundles/dataTables")
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+      $('#person').DataTable();
+    });
+
+  </script>
+}
