@@ -5,18 +5,13 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-  <div>
-    <h2>PersonDetails</h2>
-    <p>
-      @Html.ActionLink("Create New", "CreatePerson")
-    </p>
-  </div>
-
-
-
-
-
-
+<nav>
+  <h2>Personal Details</h2>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li> /
+    <li class="breadcrumb-item" aria-current="page"> <a href="@Url.Action("CreatePerson", "Person")">Add Person</a></li>
+  </ol>
+</nav>
 
 <table id="person" class="table">
 
@@ -43,7 +38,7 @@
         </td>
         <td>
           @Html.ActionLink("Edit", "Edit", new { id = item.code }) |
-          @Html.ActionLink("Details", "Index","Accounts", new { id = item.code },"") |
+          @Html.ActionLink("Details", "Index", "Accounts", new { id = item.code }, "") |
           @Html.ActionLink("Delete", "Delete", new { id = item.code })
         </td>
       </tr>
