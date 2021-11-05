@@ -12,7 +12,7 @@ namespace WebUI.Controllers
     {
         IRepositoryBase<Accounts> _accounts;
         IRepositoryBase<Person> _persons;
-
+        public static Person personObj;
         //Constructor
         public AccountsController(IRepositoryBase<Accounts> accounts, IRepositoryBase<Person> persons)
         {
@@ -23,16 +23,18 @@ namespace WebUI.Controllers
         // GET: Accounts
         public ActionResult Index(int id)
         {
-            var person = _persons.GetByID(id);
+            personObj = _persons.GetByID(id);
             var account = _accounts.GetAll().Where(x => x.person_code == id);
-            ViewData["Person"] = person.name+" "+person.surname;
-            ViewData["PersonId"] = person.code;
+            ViewData["Person"] = personObj.name+" "+ personObj.surname;
+            ViewData["PersonId"] = personObj.code;
             return View(account);
         }
 
         public ActionResult Edit(int id)
         {
             var obj = _accounts.GetByID(id);
+            ViewData["Person"] = personObj.name + " " + personObj.surname;
+            ViewData["PersonId"] = personObj.code;
             return View(obj);
         }
 
@@ -53,6 +55,8 @@ namespace WebUI.Controllers
         public ActionResult CreateAccount(int id)
         {
             var model = new Accounts();
+            model.person_code = personObj.code;
+            ViewData["PersonId"] = personObj.code;
             return View(model);
         }
 
