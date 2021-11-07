@@ -97,6 +97,37 @@ namespace WebUI.Controllers
             return View(person);
         }
 
+
+        
+        public ActionResult Delete(int id)
+        {
+            var obj = _persons.GetByID(id);
+            return View(obj);
+        }
+
+        // Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete([Bind(Include = "code,name,surname,id_number")] Person person)
+        {
+            ValidatePersonDelete(person.code);
+            if (ModelState.IsValid)
+            {
+                _persons.Delete(person);
+                _persons.Save();
+               return RedirectToAction("Index");
+            }
+            return View(person);
+        }
+
+        void ValidatePersonDelete(int code)
+        {
+            var isAccountActive = _accounts.GetAll().Where(x => x.person_code == code);
+            if (isAccountActive.Count() > 0) {
+                ModelState.AddModelError("name", "Account is Active.");
+            }
+        }
+
         void ValidatePersonId(Person person)
         {
             var index = _persons.GetAll().Where(x => x.id_number == person.id_number && x.code !=  person.code);

@@ -54,23 +54,28 @@ namespace WebUI.Controllers
         //Create new account
         public ActionResult CreateAccount(int id)
         {
-            var model = new Accounts();
-            model.person_code = personObj.code;
-            ViewData["PersonId"] = personObj.code;
-            return View(model);
+           
+                var model = new Accounts();
+                model.person_code = personObj.code;
+                model.active = true;
+                ViewData["PersonId"] = personObj.code;
+                return View(model);
+           
         }
 
         [HttpPost]
         public ActionResult CreateAccount([Bind(Include = "account_number,outstanding_balance,person_code, active")] Accounts account)
         {
-            ValidateAccountNumber(account);
-            if (ModelState.IsValid)
-            {
-                _accounts.Insert(account);
-                _accounts.Save();
-                return RedirectToAction("Index", new { id = account.person_code });
-            }
-            return View(account);
+            
+                ValidateAccountNumber(account);
+                if (ModelState.IsValid)
+                {
+                    _accounts.Insert(account);
+                    _accounts.Save();
+                    return RedirectToAction("Index", new { id = account.person_code });
+                }
+                return View(account);
+            
         }
 
         void ValidateAccountNumber(Accounts account)
@@ -80,6 +85,11 @@ namespace WebUI.Controllers
             if (index.Count() > 0)
             {
                 ModelState.AddModelError("account_number", "Duplicate Account Number.");
+            }
+
+            if (String.IsNullOrEmpty(account.account_number))
+            {
+                ModelState.AddModelError("account_number", "Account Number is invalid.");
             }
         }
 
