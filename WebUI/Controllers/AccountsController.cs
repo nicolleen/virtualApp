@@ -39,7 +39,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "code,account_number,outstanding_balance,person_code")] Accounts accounts)
+        public ActionResult Edit([Bind(Include = "code,account_number,outstanding_balance,person_code, active")] Accounts accounts)
         {
             ValidateAccountNumber(accounts);
             if (ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateAccount([Bind(Include = "account_number,outstanding_balance,person_code")] Accounts account)
+        public ActionResult CreateAccount([Bind(Include = "account_number,outstanding_balance,person_code, active")] Accounts account)
         {
             ValidateAccountNumber(account);
             if (ModelState.IsValid)

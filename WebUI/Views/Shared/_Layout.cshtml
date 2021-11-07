@@ -8,12 +8,12 @@
   <title>@ViewBag.Title  | Virtual Transactions</title>
   <link href="@Url.Content("~/Content/adminlte.min.css")" rel="stylesheet" />
   <link href="@Url.Content("~/Plugins/fontawesome-free/css/all.min.css")" rel="stylesheet" />
-  @Styles.Render("~/Content/css")
   <script src="~/Scripts/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="~/Scripts/DataTables/jquery.dataTables.js"></script>
   <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
   <link href="~/Content/DataTables/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="~/scripts/jquery.datetimepicker.js"></script>
+  @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="hold-transition sidebar-mini">
@@ -21,31 +21,21 @@
 
     @Html.Partial("_NavBar")
     @Html.Partial("_SideBar")
-    <div class="content-wrapper" style="padding:10px">
+    <div class="content-wrapper" style="padding:10px; min-height: calc(100vh - calc(0.2rem + 1px) - calc(2.2rem + 1px));" >
       @RenderBody()
     </div>
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
-      <div class="p-3">
-        <h5>Login</h5>
-        <p>Please login here</p>
-      </div>
     </aside>
     <!-- /.control-sidebar -->
     <!-- Main Footer -->
     <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
-        Anything you want
-      </div>
-      <!-- Default to the left -->
-      <strong>Copyright &copy; 2021 Virtual Transactions.
+      <strong>Copyright &copy; 2021 Virtual Transactions.</strong>
     </footer>
   </div>
   @Scripts.Render("~/bundles/jquery")
   <script src="@Url.Content("~/Plugins/bootstrap/js/bootstrap.bundle.min.js")"></script>
   <script src="@Url.Content("~/Scripts/adminlte.min.js")"></script>
   @RenderSection("scripts", required: false)
-
 </body>
 </html>

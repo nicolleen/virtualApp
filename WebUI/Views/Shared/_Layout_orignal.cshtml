@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewBag.Title - Virtual Transaction Application</title>
+  @Styles.Render("~/Content/css")
+  @Scripts.Render("~/bundles/modernizr")
+  <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+  <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+  <link href="~/Content/DataTables/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="~/scripts/jquery.datetimepicker.js"></script>
+</head>
+<body>
+ 
+        <nav class="navbar navbar-dark bg-dark" style="background-color: #183a1d;border-color: #183a1d;margin-bottom:0px!important">
+          <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+              <img style="height:6rem" id="img_logo" alt="Logo" src="@Url.Content("~/Content/Images/logoNoText.png")" />
+            </a>
+
+          <ul class="nav" style="float: right;top: 1.8rem; background-color: #183a1d !important;">
+            <li class="nav-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="nav-item"><a href="@Url.Action("Index", "Person")">Persons</a></li>
+            <li class="nav-item"><a href="@Url.Action("About", "Home")">About</a></li>
+            <li class="nav-item"><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+          </ul>
+
+          </div>
+        </nav>
+  
+        
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - The Virtual Agent Assessment</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>

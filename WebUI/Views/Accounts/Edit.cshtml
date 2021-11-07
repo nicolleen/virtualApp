@@ -42,7 +42,18 @@
         @Html.ValidationMessageFor(model => model.outstanding_balance, "", new { @class = "text-danger" })
       </div>
     </div>
-    
+
+    <div class="mb-3" style="padding-top:5px">
+      <label for="model.outstanding_balance" class="form-label">Active</label>
+      <div>
+        @(Model.outstanding_balance != 0 ?
+          @Html.EditorFor(model => model.active, new { htmlAttributes = new { @class = "checkbox form-control", @disabled ="true",  @readonly = "readonly" } }) :
+          @Html.EditorFor(model => model.active, new { htmlAttributes = new { @class = "checkbox form-control" } })
+        )
+        @Html.ValidationMessageFor(model => model.active, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
     <div class="mb-3" style="padding-top:5px">
       <div class="col-md-offset-2 col-md-10">
         <input type="submit" value="Save" class="btn btn-default" />

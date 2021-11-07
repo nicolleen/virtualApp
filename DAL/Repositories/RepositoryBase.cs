@@ -54,7 +54,7 @@ namespace DAL.Repositories
         /// <summary>
         /// Inserts
         /// </summary>
-        /// <param name="student"></param>
+        /// <param name="person"></param>
         public virtual void Insert(TEntity entity)
         {
             dbset.Add(entity);
@@ -64,7 +64,7 @@ namespace DAL.Repositories
         /// <summary>
         /// Delete
         /// </summary>
-        /// <param name="poductID"></param>
+        /// <param name="personID"></param>
         public virtual void Delete(TEntity entity)
         {
             //Deleting by passing entity
@@ -78,7 +78,7 @@ namespace DAL.Repositories
         /// <summary>
         /// Update 
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="person"></param>
         public virtual void Update(TEntity entity)
         {
             dbset.Attach(entity);

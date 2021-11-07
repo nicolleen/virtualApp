@@ -8,9 +8,9 @@
 <h2>Transactions</h2>
 <nav>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li> 
-    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Accounts", new { id = @ViewData["PersonId"] })">Account List</a></li> 
-    <li class="breadcrumb-item"><a href="@Url.Action("CreateTransaction", "Transactions", new { id = @ViewData["AccountId"] })">Create Transaction</a></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li class="breadcrumb-item"><a href="@Url.Action("Index", "Accounts", new { id = @ViewData["PersonId"] })">Account List</a></li>
+    <li class="breadcrumb-item"><a id="createTrans" href="@Url.Action("CreateTransaction", "Transactions", new { id = @ViewData["AccountId"] })" >Create Transaction</a></li>
   </ol>
 </nav>
 
@@ -60,3 +60,15 @@
   }
 
 </table>
+
+<script>
+  $(document).ready(function () {
+  
+    var _myNames= @Html.Raw(Json.Encode(ViewData["isActive"]));
+    if (_myNames == false) {
+     $("#createTrans").attr('disabled', 'disabled');
+     $("#createTrans").removeAttr('href');
+    }
+       
+   });
+</script>

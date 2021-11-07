@@ -14,20 +14,44 @@ namespace WebUI.Controllers
     {
 
         IRepositoryBase<Person> _persons;
+        IRepositoryBase<Accounts> _accounts;
         
-        //Constructor
-        public PersonController(IRepositoryBase<Person> persons)
+        //
+
+        public PersonController(IRepositoryBase<Person> persons, IRepositoryBase<Accounts> accounts)
         {
             _persons = persons;
+            _accounts = accounts;
             
-
         }
 
         // GET: Person Details
         public ActionResult Index()
         {
             var model = _persons.GetAll();
+           
             return View(model);
+        }
+
+        //Person List
+        public ActionResult PersonList()
+        {
+            var model = _persons.GetAll();
+            var accModel = _accounts.GetAll();
+
+            List<personAccount> termsList = new List<personAccount>();
+
+            foreach (var user in model)
+            {
+                var item = accModel.Where(x => x.person_code == user.code)?.Select(x => x.account_number);
+                var accountNumber = string.Join(",", item);
+                var paItem = new personAccount();
+                paItem.account = accountNumber;
+                paItem.person = user;
+                termsList.Add(paItem);
+            };
+
+            return View(termsList);
         }
 
         //Create new Person

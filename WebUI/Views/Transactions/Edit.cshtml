@@ -35,7 +35,7 @@
       <div class="mb-3">
         <label for="model.transaction_date" class="form-label">Transaction Date</label>
         <div>
-          @Html.TextBoxFor(model => model.transaction_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "datepicker" })
+          @Html.TextBoxFor(model => model.transaction_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "form-control datepicker" })
           @Html.ValidationMessageFor(model => model.transaction_date, "", new { @class = "text-danger" })
         </div>
       </div>
@@ -43,7 +43,7 @@
       <div class="mb-3">
         <label for="model.capture_date" class="form-label">Capture Date</label>
         <div>
-          @Html.TextBoxFor(model => model.capture_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "datepicker" })
+          @Html.TextBoxFor(model => model.capture_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "form-control datepicker" , @readOnly = "true"})
           @Html.ValidationMessageFor(model => model.capture_date, "", new { @class = "text-danger" })
         </div>
       </div>

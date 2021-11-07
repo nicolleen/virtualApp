@@ -14,7 +14,8 @@ namespace Model
         public int code { get; set; }
         public string account_number { get; set; }
         public decimal outstanding_balance { get; set; }
-  
+        public bool? active { get; set; }
+
         // Foreign key 
         [Display(Name = "Name")]
         public int person_code { get; set; }

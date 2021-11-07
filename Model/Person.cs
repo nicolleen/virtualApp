@@ -19,4 +19,12 @@ namespace Model
         public string id_number { get; set; }
 
     }
+
+
+    public class personAccount
+    {
+        public virtual Person person { get; set; }
+        [Key]
+        public string account { get; set; }
+    }
 }

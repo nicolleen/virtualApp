@@ -27,13 +27,8 @@ namespace DAL.Data
         /// </summary>
         public DbSet<Person> Persons { get; set; }
         public DbSet<Accounts> Accounts { get; set; }
+        public DbSet<Transactions> Transactions { get; set; }
 
-        public System.Data.Entity.DbSet<Model.Transactions> Transactions { get; set; }
-        //public DbSet<Product> Products { get; set; }
-        // public DbSet<Order> Orders { get; set; }
-        //public DbSet<OrderItem> OrderItems { get; set; }
-        //public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Basket> Basket { get; set; }
-        //public DbSet<BasketItem> BasketItems { get; set; }
+        public System.Data.Entity.DbSet<Model.personAccount> personAccounts { get; set; }
     }
 }

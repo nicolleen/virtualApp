@@ -34,7 +34,7 @@
       <div class="mb-3">
         <label for="model.transaction_date" class="form-label">Transaction Date</label>
         <div>
-          @Html.TextBoxFor(model => model.transaction_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "datepicker" })
+          @Html.TextBoxFor(model => model.transaction_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "form-control datepicker" })
           @Html.ValidationMessageFor(model => model.transaction_date, "", new { @class = "text-danger" })
         </div>
       </div>
@@ -42,7 +42,7 @@
       <div class="mb-3">
         <label for="model.capture_date" class="form-label">Capture Date</label>
         <div>
-          @Html.TextBoxFor(model => model.capture_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "datepicker" })
+          @Html.TextBoxFor(model => model.capture_date, "{0:yy/MM/dd hh:mm:ss}", new { @class = "form-control datepicker",  @readOnly = "true" })
           @Html.ValidationMessageFor(model => model.capture_date, "", new { @class = "text-danger" })
         </div>
       </div>
@@ -50,7 +50,7 @@
       <div class="mb-3">
         <label for="model.amount" class="form-label">Amount</label>
         <div>
-          @Html.TextBoxFor(model => model.amount, new { @class = "form-control" })
+          @Html.TextBoxFor(model => model.amount, "{0:n0}", new { @class = "form-control" })
           @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
         </div>
       </div>
@@ -62,7 +62,6 @@
           @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
         </div>
       </div>
-
 
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -83,17 +82,16 @@
   <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
   <script>
     $(document).ready(function () {
-
       var dateObj = new Date();
-
       var time = dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
-
-
       $(".datepicker").datepicker({
+        maxDate: new Date,
         dateFormat: "yy/mm/dd " + time,
         changemonth: true,
         changeyear: true
       });
     });
+
+   
   </script>
 }
