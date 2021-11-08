@@ -74,7 +74,8 @@ namespace WebUI.Controllers
                     _accounts.Save();
                     return RedirectToAction("Index", new { id = account.person_code });
                 }
-                return View(account);
+            ViewData["PersonId"] = account.person_code;
+            return View(account);
             
         }
 
